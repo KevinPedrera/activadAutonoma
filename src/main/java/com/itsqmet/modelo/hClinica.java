@@ -66,7 +66,11 @@ public class hClinica {
     //Vacio
     public hClinica() {
     }
-    public hClinica(int id, String nombre, int edad, String genero, String telefono, String alergias, String enfermedadesCronicas, String medicamentosActuales, String cirugiasPrevias, double peso, double estatura, String presionArterial, String motivoConsulta, String diagnostico, String tratamiento, String observaciones) {
+
+    public hClinica(Integer id, String nombre, Integer edad, String genero, String telefono,
+                    String alergias, String enfermedadesCronicas, String medicamentosActuales,
+                    String cirugiasPrevias, Double peso, Double estatura, String presionArterial,
+                    String motivoConsulta, String diagnostico, String tratamiento, String observaciones) {
         this.id = id;
         this.nombre = nombre;
         this.edad = edad;
@@ -84,8 +88,11 @@ public class hClinica {
         this.tratamiento = tratamiento;
         this.observaciones = observaciones;
     }
-    //Sin Id
-    public hClinica(String nombre, int edad, String genero, String telefono, String alergias, String enfermedadesCronicas, String medicamentosActuales, String cirugiasPrevias, double peso, double estatura, String presionArterial, String motivoConsulta, String diagnostico, String tratamiento, String observaciones) {
+
+    public hClinica(String nombre, Integer edad, String genero, String telefono,
+                    String alergias, String enfermedadesCronicas, String medicamentosActuales,
+                    String cirugiasPrevias, Double peso, Double estatura, String presionArterial,
+                    String motivoConsulta, String diagnostico, String tratamiento, String observaciones) {
         this.nombre = nombre;
         this.edad = edad;
         this.genero = genero;
@@ -102,12 +109,13 @@ public class hClinica {
         this.tratamiento = tratamiento;
         this.observaciones = observaciones;
     }
-    //GETTER Y SETTER
-    public int getId() {
+
+    // Getters y Setters
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -119,11 +127,11 @@ public class hClinica {
         this.nombre = nombre;
     }
 
-    public int getEdad() {
+    public Integer getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(Integer edad) {
         this.edad = edad;
     }
 
@@ -175,19 +183,19 @@ public class hClinica {
         this.cirugiasPrevias = cirugiasPrevias;
     }
 
-    public double getPeso() {
+    public Double getPeso() {
         return peso;
     }
 
-    public void setPeso(double peso) {
+    public void setPeso(Double peso) {
         this.peso = peso;
     }
 
-    public double getEstatura() {
+    public Double getEstatura() {
         return estatura;
     }
 
-    public void setEstatura(double estatura) {
+    public void setEstatura(Double estatura) {
         this.estatura = estatura;
     }
 
@@ -231,4 +239,3 @@ public class hClinica {
         this.observaciones = observaciones;
     }
 }
-
