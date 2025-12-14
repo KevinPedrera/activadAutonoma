@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Historia Clínica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 font-sans text-gray-800">
+
+<!-- Navbar -->
+<nav class="bg-gray-900 shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a th:href="@{/}" class="flex items-center space-x-3 text-white font-bold text-xl">
+            <img th:src="@{/imagenes/hospital.png}" class="h-8 w-8" alt="Logo">
+            <span>Clínica Itsqmet</span>
+        </a>
+        <ul class="hidden md:flex space-x-8 text-gray-200 font-medium">
+            <li><a th:href="@{/}" class="hover:text-yellow-400 transition">Inicio</a></li>
+            <li><a th:href="@{/historiaClinica/registro}" class="hover:text-yellow-400 transition">Registrar Paciente</a></li>
+        </ul>
+        <button class="md:hidden" data-collapse-toggle="mobile-menu">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/>
+            </svg>
+        </button>
+    </div>
+</nav>
+
+<!-- Formulario -->
+<div class="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-xl mt-8">
+    <h1 class="text-2xl font-bold mb-6 text-blue-900">Registro de Historia Clínica</h1>
+
+    <form th:action="@{/historiaClinica/guardar}" th:object="${historiaClinica}" method="post" class="space-y-6">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <label class="block text-gray-700 font-medium">Nombre completo</label>
+                <input type="text" th:field="*{nombre}" class="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-blue-400">
+                <p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="text-red-500 text-sm"></p>
+            </div>
+
+            <div>
+                <label class="block text-gray-700 font-medium">Edad</label>
+                <input type="number" th:field="*{edad}" class="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-blue-400">
+                <p th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}" class="text-red-500 text-sm"></p>
+            </div>
+
+            <div>
+                <label class="block text-gray-700 font-medium">Género</label>
+                <select th:field="*{genero}" class="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-blue-400">
+                    <option value="">Seleccione</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                    <option value="Otro">Otro</option>
+                </select>
+                <p th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}" class="text-red-500 text-sm"></p>
+            </div>
+
+            <div>
+                <label class="block text-gray-700 font-medium">Teléfono</label>
+                <input type="tel" th:field="*{telefono}" class="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-blue-400">
+                <p th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}" class="text-red-500 text-sm"></p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <label class="block text-gray-700 font-medium">Alergias</label>
+                <input type="text" th:field="*{alergias}" class="w-full mt-1 p-2 border rounded-md">
+            </div>
+
+            <div>
+                <label class="block text-gray-700 font-medium">Enfermedades crónicas</label>
+                <input type="text" th:field="*{enfermedadesCronicas}" class="w-full mt-1 p-2 border rounded-md">
+            </div>
+
+            <div>
+                <label class="block text-gray-700 font-medium">Medicamentos actuales</label>
+                <input type="text" th:field="*{medicamentosActuales}" class="w-full mt-1 p-2 border rounded-md">
+            </div>
+
+            <div>
+                <label class="block text-gray-700 font-medium">Cirugías previas</label>
+                <input type="text" th:field="*{cirugiasPrevias}" class="w-full mt-1 p-2 border rounded-md">
+            </div>
+        </div>
+
+        <div>
+            <label class="block text-gray-700 font-medium">Motivo de consulta</label>
+            <textarea th:field="*{motivoConsulta}" rows="2" class="w-full mt-1 p-2 border rounded-md"></textarea>
+        </div>
+
+        <div>
+            <label class="block text-gray-700 font-medium">Diagnóstico</label>
+            <textarea th:field="*{diagnostico}" rows="2" class="w-full mt-1 p-2 border rounded-md"></textarea>
+        </div>
+
+        <div>
+            <label class="block text-gray-700 font-medium">Tratamiento</label>
+            <textarea th:field="*{tratamiento}" rows="2" class="w-full mt-1 p-2 border rounded-md"></textarea>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+                <label class="block text-gray-700 font-medium">Peso (kg)</label>
+                <input type="number" step="0.1" th:field="*{peso}" class="w-full mt-1 p-2 border rounded-md">
+            </div>
+
+            <div>
+                <label class="block text-gray-700 font-medium">Estatura (cm)</label>
+                <input type="number" step="0.1" th:field="*{estatura}" class="w-full mt-1 p-2 border rounded-md">
+            </div>
+
+            <div>
+                <label class="block text-gray-700 font-medium">Presión arterial</label>
+                <input type="text" th:field="*{presionArterial}" class="w-full mt-1 p-2 border rounded-md">
+            </div>
+        </div>
+
+        <div>
+            <label class="block text-gray-700 font-medium">Observaciones adicionales</label>
+            <textarea th:field="*{observaciones}" rows="3" class="w-full mt-1 p-2 border rounded-md"></textarea>
+        </div>
+
+        <div class="flex justify-end">
+            <button type="submit" class="bg-yellow-500 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition">
+                Guardar Historia
+            </button>
+        </div>
+
+    </form>
+</div>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-300 mt-12">
+    <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-center items-center">
+        <span>© 2025 Clínica Itsqmet . Todos los derechos reservados.</span>
+        <div class="flex space-x-8 mt-4 md:mt-0">
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

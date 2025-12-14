@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Resumen Historia Clínica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+<!-- NAVBAR -->
+<nav class="bg-gray-900 shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a th:href="@{/}" class="flex items-center space-x-3 text-white font-bold text-xl">
+            <img th:src="@{/imagenes/hospital.png}" class="h-8 w-8" alt="Logo">
+            <span>Clínica Itsqmet</span>
+        </a>
+        <ul class="hidden md:flex space-x-8 text-gray-200 font-medium">
+            <li>
+                <a th:href="@{/}" class="hover:text-yellow-400 transition">Inicio</a>
+            </li>
+            <li>
+                <a th:href="@{/historiaClinica/registro}" class="hover:text-yellow-400 transition">
+                    Registrar Paciente
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="max-w-5xl mx-auto mt-10 bg-white shadow-lg rounded-xl p-8">
+
+    <h1 class="text-2xl font-bold text-gray-900 mb-8 border-b pb-4">
+        Resumen de Historia Clínica
+    </h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+
+        <div class="bg-gray-50 p-4 rounded-lg">
+            <p class="font-semibold text-gray-700">Nombre</p>
+            <p th:text="${datos.nombre}"></p>
+        </div>
+
+        <div class="bg-gray-50 p-4 rounded-lg">
+            <p class="font-semibold text-gray-700">Edad</p>
+            <p th:text="${datos.edad}"></p>
+        </div>
+
+        <div class="bg-gray-50 p-4 rounded-lg">
+            <p class="font-semibold text-gray-700">Género</p>
+            <p th:text="${datos.genero}"></p>
+        </div>
+
+        <div class="bg-gray-50 p-4 rounded-lg">
+            <p class="font-semibold text-gray-700">Teléfono</p>
+            <p th:text="${datos.telefono}"></p>
+        </div>
+
+        <div class="bg-gray-50 p-4 rounded-lg">
+            <p class="font-semibold text-gray-700">Alergias</p>
+            <p th:text="${datos.alergias}"></p>
+        </div>
+
+        <div class="bg-gray-50 p-4 rounded-lg">
+            <p class="font-semibold text-gray-700">Enfermedades crónicas</p>
+            <p th:text="${datos.enfermedadesCronicas}"></p>
+        </div>
+
+        <div class="bg-gray-50 p-4 rounded-lg">
+            <p class="font-semibold text-gray-700">Medicamentos actuales</p>
+            <p th:text="${datos.medicamentosActuales}"></p>
+        </div>
+
+        <div class="bg-gray-50 p-4 rounded-lg">
+            <p class="font-semibold text-gray-700">Cirugías previas</p>
+            <p th:text="${datos.cirugiasPrevias}"></p>
+        </div>
+
+        <div class="bg-gray-50 p-4 rounded-lg">
+            <p class="font-semibold text-gray-700">Peso</p>
+            <p><span th:text="${datos.peso}"></span> kg</p>
+        </div>
+
+        <div class="bg-gray-50 p-4 rounded-lg">
+            <p class="font-semibold text-gray-700">Estatura</p>
+            <p><span th:text="${datos.estatura}"></span> cm</p>
+        </div>
+
+        <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
+            <p class="font-semibold text-gray-700">Presión arterial</p>
+            <p th:text="${datos.presionArterial}"></p>
+        </div>
+    </div>
+
+    <div class="mt-8 space-y-4">
+        <div>
+            <p class="font-semibold text-gray-700">Motivo de consulta</p>
+            <p th:text="${datos.motivoConsulta}" class="ml-2 text-sm"></p>
+        </div>
+
+        <div>
+            <p class="font-semibold text-gray-700">Diagnóstico</p>
+            <p th:text="${datos.diagnostico}" class="ml-2 text-sm"></p>
+        </div>
+
+        <div>
+            <p class="font-semibold text-gray-700">Tratamiento</p>
+            <p th:text="${datos.tratamiento}" class="ml-2 text-sm"></p>
+        </div>
+
+        <div>
+            <p class="font-semibold text-gray-700">Observaciones</p>
+            <p th:text="${datos.observaciones}" class="ml-2 text-sm"></p>
+        </div>
+    </div>
+
+    <div class="mt-10 text-right">
+        <a th:href="@{/historiaClinica/registro}"
+           class="bg-yellow-500 text-white px-6 py-2 rounded-lg font-medium hover:bg-gray-700 transition">
+            Registrar otro paciente
+        </a>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-gray-900 text-gray-300 mt-12">
+    <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-center items-center">
+        <span>© 2025 Clínica Itsqmet. Todos los derechos reservados.</span>
+    </div>
+</footer>
+
+</body>
+</html>
